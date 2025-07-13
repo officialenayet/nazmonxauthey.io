@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nazmon Shakib x Tusfia Khanom Authey</title>
+  <!-- Link preview -->
+  <meta property="og:title" content="Nazmon Shakib x Tusfia Khanom Authey">
+  <meta property="og:description" content="A beautiful tracker of our love story.">
+  <meta property="og:image" content="https://i.postimg.cc/wxm2wkyZ/Picsart-25-07-13-03-14-19-310.jpg">
+  <meta property="og:url" content="https://nazmonxauthey.loveslife.biz">
+  <meta property="og:type" content="website">
+  <meta property="fb:app_id" content="your_fb_app_id_here">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #333;
+      transition: background 0.3s, color 0.3s;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+    h1.header {
+      font-size: 20px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border: 2px solid #4CAF50;
+      border-radius: 25px;
+      background: #f0f0f0;
+      color: #4CAF50;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      margin-top: 20px;
+      margin-bottom: 40px;
+      cursor: default;
+      transition: all 0.3s ease;
+    }
+    h1.header:hover {
+      background: #4CAF50;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      margin-bottom: 40px;
+    }
+    .logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      cursor: pointer;
+      object-fit: cover;
+    }
+    .plus {
+      font-size: 48px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    h2 {
+      font-size: 28px;
+      margin: 20px 0 10px 0;
+      color: #4CAF50;
+      text-align: center;
+    }
+    p {
+      font-size: 20px;
+      margin: 5px 0;
+      text-align: center;
+    }
+    footer {
+      padding: 20px;
+      text-align: center;
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px; width: 26px;
+      left: 4px; bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+    .dark-mode {
+      background: #333;
+      color: #eee;
+    }
+    #lovePercent {
+      font-size: 24px;
+      margin: 10px 0;
+      text-align: center;
+      font-weight: bold;
+      color: #333;
+      transition: color 0.3s;
+    }
+    .dark-mode #lovePercent {
+      color: #ffccff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="header">#Simply_Us</h1>
+
+    <div class="logo-container">
+      <a href="https://www.facebook.com/share/16vPXgLx8k/" target="_blank">
+        <img src="https://i.postimg.cc/6pYqbZCk/IMG-20250712-043500.jpg" alt="Authey" class="logo"/>
+      </a>
+      <div class="plus" id="heart">💫</div>
+      <a href="https://www.facebook.com/share/16yH3mNjzF/" target="_blank">
+        <img src="https://i.postimg.cc/cHTnQzXn/IMG-20250712-043006.jpg" alt="Nazmon" class="logo"/>
+      </a>
+    </div>
+
+    <h2>Since Our Hearts Met</h2>
+    <p id="age"></p>
+    <p id="detailed"></p>
+    <p id="liveClock"></p>
+    <p id="lovePercent"></p>
+  </div>
+
+  <footer>
+    <label class="switch">
+      <input type="checkbox" id="modeToggle">
+      <span class="slider"></span>
+    </label>
+    <div>Dark Mode</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    const dob = new Date("2023-05-14T00:00:00");
+    const ageEl = document.getElementById("age");
+    const detailedEl = document.getElementById("detailed");
+    const clockEl = document.getElementById("liveClock");
+    const lovePercentEl = document.getElementById("lovePercent");
+    const modeToggle = document.getElementById("modeToggle");
+    const heart = document.getElementById("heart");
+    const beep = new Audio("https://github.com/officialenayet/Prompt/raw/refs/heads/main/ding-101492.mp3");
+
+    function update() {
+      const now = new Date();
+      const diff = now - dob;
+      const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24)) + 1;
+
+      let y = now.getFullYear() - dob.getFullYear();
+      let m = now.getMonth() - dob.getMonth();
+      let d = now.getDate() - dob.getDate();
+
+      if (d < 0) {
+        m--;
+        const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+        d += prevMonth.getDate();
+      }
+      if (m < 0) {
+        y--;
+        m += 12;
+      }
+
+      ageEl.textContent = `${totalDays} days together`;
+      detailedEl.textContent = `(${y}y-${m}m-${d}d)`;
+
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+
+      clockEl.textContent = `${hours} hours, ${minutes} minutes, ${seconds} second`;
+
+      if (seconds === 0) {
+        beep.play();
+        confetti({
+          particleCount: 200,
+          spread: 100,
+          origin: { y: 0.6 },
+          startVelocity: 50,
+          colors: ['#ff0000','#00ff00','#0000ff','#ffff00','#ff00ff'],
+          shapes: ['circle','star'],
+        });
+        setTimeout(() => confetti.reset(), 6000);
+      }
+    }
+
+    setInterval(update, 1000);
+    update();
+
+    modeToggle.addEventListener("change", () => {
+      document.body.classList.toggle("dark-mode", modeToggle.checked);
+      confetti({
+        particleCount: 150,
+        spread: 120,
+        startVelocity: 45,
+        origin: { y: 0.6 },
+        shapes: ['circle', 'star'],
+        colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff'],
+        scalar: 1.2
+      });
+    });
+
+    heart.addEventListener("click", () => {
+      if (lovePercentEl.textContent.trim() !== "") {
+        lovePercentEl.textContent = "";
+        return;
+      }
+      let percentage;
+      if (Math.random() < 0.9) {
+        percentage = Math.floor(Math.random() * 20) + 80;
+      } else {
+        percentage = Math.floor(Math.random() * 30) + 50;
+      }
+      lovePercentEl.textContent = `💫 Love Percentage: ${percentage}%`;
+      for (let i = 0; i < 20; i++) {
+        confetti({
+          particleCount: 1,
+          startVelocity: 30,
+          spread: 360,
+          origin: { x: Math.random(), y: Math.random() - 0.2 },
+          shapes: ["text"],
+          scalar: 2,
+          ticks: 100,
+          gravity: 0.5,
+          drift: Math.random() - 0.5,
+          zIndex: 100,
+          text: "🖤"
+        });
+      }
+    });
+  </script>
+</body>
+</html>
