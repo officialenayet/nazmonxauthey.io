@@ -1,0 +1,21 @@
+{
+  "name": "Nazmon x Authey",
+  "short_name": "NazAuthey",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4CAF50",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://i.postimg.cc/wxm2wkyZ/Picsart-25-07-13-03-14-19-310.jpg",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://i.postimg.cc/wxm2wkyZ/Picsart-25-07-13-03-14-19-310.jpg",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
