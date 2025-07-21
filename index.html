@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>🎁 Surprise Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #ffe6f0, #fff0f5);
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .wrapper {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background: #fce4ec;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .gift-box {
+      position: relative;
+      width: 250px;
+      height: 250px;
+      background: #ff4081;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .ribbon {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 100%;
+      background: #fff;
+      z-index: 2;
+    }
+
+    .ribbon::before,
+    .ribbon::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 40px;
+      background: #fff;
+      left: 0;
+    }
+
+    .ribbon::before {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .ribbon::after {
+      top: auto;
+      bottom: 0;
+    }
+
+    .left-door, .right-door {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background: #ff4081;
+      z-index: 9;
+      transition: transform 1s ease-in-out;
+    }
+
+    .left-door {
+      left: 0;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+
+    .right-door {
+      right: 0;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+
+    .open .left-door {
+      transform: translateX(-100%);
+    }
+
+    .open .right-door {
+      transform: translateX(100%);
+    }
+
+    .click-text {
+      position: absolute;
+      bottom: 15px;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="left-door"></div>
+    <div class="right-door"></div>
+    <div class="gift-box" id="gift">
+      <div class="ribbon"></div>
+      <div class="click-text">🎀 রিবনে টাচ করুন</div>
+    </div>
+  </div>
+
+  <script>
+    const gift = document.getElementById('gift');
+    const wrapper = document.querySelector('.wrapper');
+
+    gift.addEventListener('click', () => {
+      wrapper.classList.add('open');
+
+      // animation duration 1s, delay before redirecting
+      setTimeout(() => {
+        window.location.href = "https://officialenayet.github.io/nazmonxauthey.io/"; // 🔁 এখানেই redirect URL বসান
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
